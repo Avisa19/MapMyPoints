@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,59 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tD1-Vn-QDj">
+                                <rect key="frame" x="20" y="44" width="374" height="774"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8Z-3q-LmS">
+                                <rect key="frame" x="20" y="818" width="374" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PW7-UK-EeQ"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="LUCI" id="bZO-eK-YHe">
+                                        <connections>
+                                            <action selector="luciTapped:" destination="BYZ-38-t0r" id="tuz-mg-lqf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BbS-Os-YrO"/>
+                                    <barButtonItem title="WICL" id="mDn-Iq-j3o">
+                                        <connections>
+                                            <action selector="wiclTapped:" destination="BYZ-38-t0r" id="RG4-Pv-gUO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="POP-E4-ZJr"/>
+                                    <barButtonItem title="Gradient" id="qXb-Sc-Xsg">
+                                        <connections>
+                                            <action selector="gradientTapped:" destination="BYZ-38-t0r" id="IMb-qz-r7C"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="K8Z-3q-LmS" firstAttribute="top" secondItem="tD1-Vn-QDj" secondAttribute="bottom" id="G90-sb-Biy"/>
+                            <constraint firstItem="tD1-Vn-QDj" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="L2W-98-SlF"/>
+                            <constraint firstItem="tD1-Vn-QDj" firstAttribute="trailing" secondItem="K8Z-3q-LmS" secondAttribute="trailing" id="Vle-DZ-iGm"/>
+                            <constraint firstItem="tD1-Vn-QDj" firstAttribute="leading" secondItem="K8Z-3q-LmS" secondAttribute="leading" id="ejU-Hz-1sz"/>
+                            <constraint firstItem="K8Z-3q-LmS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fQs-I6-Apx"/>
+                            <constraint firstItem="tD1-Vn-QDj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="kjU-wP-0Be"/>
+                            <constraint firstItem="tD1-Vn-QDj" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="roy-dN-z1A"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="tD1-Vn-QDj" id="Zhv-5g-Tyx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="118.52678571428571"/>
         </scene>
     </scenes>
 </document>
