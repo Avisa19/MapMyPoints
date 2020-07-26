@@ -26,14 +26,17 @@
     [self addAnnotation];
 }
 - (IBAction)luciTapped:(id)sender {
+    [self centerMap:self.luciAnno];
 }
 - (IBAction)wiclTapped:(id)sender {
+    [self centerMap:self.wiclAnno];
 }
 - (IBAction)gradientTapped:(id)sender {
+    [self centerMap:self.gradientAnno];
 }
 
 - (void) centerMap:(MKPointAnnotation *)centerPoint {
-    [self.mapView setCenterCoordinate:centerPoint.coordinate];
+    [self.mapView setCenterCoordinate:centerPoint.coordinate animated:YES];
 }
 
 - (void) addAnnotation {
@@ -44,7 +47,7 @@
     
     
     self.wiclAnno = [[MKPointAnnotation alloc] init];
-    self.wiclAnno.coordinate = CLLocationCoordinate2DMake(34.448795, -119.6646337);
+    self.wiclAnno.coordinate = CLLocationCoordinate2DMake(37.7749, -122.4194);
     self.wiclAnno.title = @"Westmont Inspired Computing Lab";
     
     self.gradientAnno = [[MKPointAnnotation alloc] init];
