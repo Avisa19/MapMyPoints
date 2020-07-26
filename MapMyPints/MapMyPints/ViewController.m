@@ -11,7 +11,11 @@
 
 
 @interface ViewController ()
+
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) MKPointAnnotation* luciAnno;
+@property (strong, nonatomic) MKPointAnnotation* wiclAnno;
+@property (strong, nonatomic) MKPointAnnotation* gradientAnno;
 
 @end
 
@@ -19,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self addAnnotation];
 }
 - (IBAction)luciTapped:(id)sender {
 }
@@ -28,5 +32,12 @@
 - (IBAction)gradientTapped:(id)sender {
 }
 
+- (void) addAnnotation {
+    self.luciAnno = [[MKPointAnnotation alloc] init];
+    self.luciAnno.coordinate = CLLocationCoordinate2DMake(33.6432094, -117.843995);
+    
+    self.wiclAnno = [[MKPointAnnotation alloc] init];
+    self.gradientAnno = [[MKPointAnnotation alloc] init];
+}
 
 @end
