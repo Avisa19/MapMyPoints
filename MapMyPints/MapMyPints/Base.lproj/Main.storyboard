@@ -24,18 +24,45 @@
                                     <constraint firstAttribute="height" constant="44" id="PW7-UK-EeQ"/>
                                 </constraints>
                                 <items>
+                                    <barButtonItem style="plain" id="SKU-Xm-8kF">
+                                        <view key="customView" contentMode="scaleToFill" id="jqN-qq-V5M">
+                                            <rect key="frame" x="20" y="5.5" width="93" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LocateMe:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlo-bS-uoe">
+                                                    <rect key="frame" x="0.0" y="5.5" width="80.5" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S57-7O-TXQ">
+                                                    <rect key="frame" x="86.5" y="2" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="switchChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3Gi-Ol-yJW"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstItem="S57-7O-TXQ" firstAttribute="leading" secondItem="Qlo-bS-uoe" secondAttribute="trailing" constant="6" id="FuM-Ka-Sfd"/>
+                                                <constraint firstItem="S57-7O-TXQ" firstAttribute="top" secondItem="jqN-qq-V5M" secondAttribute="top" constant="2" id="TMq-DB-0wi"/>
+                                                <constraint firstItem="Qlo-bS-uoe" firstAttribute="centerY" secondItem="jqN-qq-V5M" secondAttribute="centerY" id="UeR-VV-Hth"/>
+                                                <constraint firstItem="Qlo-bS-uoe" firstAttribute="top" secondItem="jqN-qq-V5M" secondAttribute="top" constant="5.5" id="dZp-KO-UdY"/>
+                                                <constraint firstItem="Qlo-bS-uoe" firstAttribute="leading" secondItem="jqN-qq-V5M" secondAttribute="leading" id="pkS-aM-u00"/>
+                                            </constraints>
+                                        </view>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="llV-iA-s61"/>
                                     <barButtonItem title="LUCI" id="bZO-eK-YHe">
                                         <connections>
                                             <action selector="luciTapped:" destination="BYZ-38-t0r" id="tuz-mg-lqf"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="BbS-Os-YrO"/>
                                     <barButtonItem title="WICL" id="mDn-Iq-j3o">
                                         <connections>
                                             <action selector="wiclTapped:" destination="BYZ-38-t0r" id="RG4-Pv-gUO"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="POP-E4-ZJr"/>
                                     <barButtonItem title="Gradient" id="qXb-Sc-Xsg">
                                         <connections>
                                             <action selector="gradientTapped:" destination="BYZ-38-t0r" id="IMb-qz-r7C"/>
@@ -58,6 +85,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="tD1-Vn-QDj" id="Zhv-5g-Tyx"/>
+                        <outlet property="switchFieid" destination="S57-7O-TXQ" id="D05-G7-EdE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

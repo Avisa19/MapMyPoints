@@ -10,12 +10,14 @@
 #import "ViewController.h"
 
 
-@interface ViewController ()
+@interface ViewController () <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPointAnnotation* luciAnno;
 @property (strong, nonatomic) MKPointAnnotation* wiclAnno;
 @property (strong, nonatomic) MKPointAnnotation* gradientAnno;
+@property (weak, nonatomic) IBOutlet UISwitch *switchFieid;
+@property (strong, nonatomic) CLLocationManager* locationManager;
 
 @end
 
@@ -23,6 +25,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.switchFieid.on = NO;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager requestWhenInUseAuthorization];
     [self addAnnotation];
 }
 - (IBAction)luciTapped:(id)sender {
@@ -33,6 +39,8 @@
 }
 - (IBAction)gradientTapped:(id)sender {
     [self centerMap:self.gradientAnno];
+}
+- (IBAction)switchChanged:(id)sender {
 }
 
 - (void) centerMap:(MKPointAnnotation *)centerPoint {
