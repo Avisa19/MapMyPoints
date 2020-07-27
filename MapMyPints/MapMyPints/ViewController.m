@@ -16,6 +16,7 @@
 @property (strong, nonatomic) MKPointAnnotation* luciAnno;
 @property (strong, nonatomic) MKPointAnnotation* wiclAnno;
 @property (strong, nonatomic) MKPointAnnotation* gradientAnno;
+@property (strong, nonatomic) MKPointAnnotation* currentAnno;
 @property (weak, nonatomic) IBOutlet UISwitch *switchFieid;
 @property (strong, nonatomic) CLLocationManager* locationManager;
 
@@ -28,6 +29,7 @@
     self.switchFieid.on = NO;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
+    [self.switchFieid isEnabled];
     [self.locationManager requestWhenInUseAuthorization];
     [self addAnnotation];
 }
@@ -41,7 +43,21 @@
     [self centerMap:self.gradientAnno];
 }
 - (IBAction)switchChanged:(id)sender {
+    
+    if (self.switchFieid.isOn) {
+        self.mapView.showsUserLocation = YES;
+        [self.locationManager startUpdatingLocation];
+    } else {
+        self.mapView.showsUserLocation = NO;
+        [self.locationManager stopUpdatingLocation];
+    }
 }
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    self.currentAnno.coordinate = locations.lastObject.coordinate;
+    [self centerMap:self.currentAnno];
+}
+
 
 - (void) centerMap:(MKPointAnnotation *)centerPoint {
     [self.mapView setCenterCoordinate:centerPoint.coordinate animated:YES];
@@ -61,6 +77,10 @@
     self.gradientAnno = [[MKPointAnnotation alloc] init];
     self.gradientAnno.coordinate = CLLocationCoordinate2DMake(40.677623, -73.993583);
     self.gradientAnno.title = @"Gradient LLC";
+    
+    self.currentAnno = [[MKPointAnnotation alloc] init];
+    self.currentAnno.coordinate = CLLocationCoordinate2DMake(0.0, 0.0);
+    self.currentAnno.title = @"My Location";
     
     [self.mapView addAnnotations:@[self.luciAnno, self.wiclAnno, self.gradientAnno]];
 }
