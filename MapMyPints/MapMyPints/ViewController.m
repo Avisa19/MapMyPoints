@@ -10,7 +10,7 @@
 #import "ViewController.h"
 
 
-@interface ViewController () <CLLocationManagerDelegate>
+@interface ViewController () <MKMapViewDelegate ,CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) MKPointAnnotation* luciAnno;
@@ -19,6 +19,7 @@
 @property (strong, nonatomic) MKPointAnnotation* currentAnno;
 @property (weak, nonatomic) IBOutlet UISwitch *switchFieid;
 @property (strong, nonatomic) CLLocationManager* locationManager;
+@property (nonatomic, assign) BOOL isMapMoving;
 
 @end
 
@@ -32,6 +33,7 @@
     [self.switchFieid isEnabled];
     [self.locationManager requestWhenInUseAuthorization];
     [self addAnnotation];
+    self.isMapMoving = NO;
 }
 - (IBAction)luciTapped:(id)sender {
     [self centerMap:self.luciAnno];
@@ -55,12 +57,18 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     self.currentAnno.coordinate = locations.lastObject.coordinate;
-    [self centerMap:self.currentAnno];
+    if (self.isMapMoving == NO) {
+        [self centerMap:self.currentAnno];
+    }
 }
 
 
 - (void) centerMap:(MKPointAnnotation *)centerPoint {
     [self.mapView setCenterCoordinate:centerPoint.coordinate animated:YES];
+}
+
+- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
+    self.isMapMoving = YES;
 }
 
 - (void) addAnnotation {
